@@ -1,0 +1,89 @@
+body{
+    background-color: #46178f;
+    align-items: center;
+    text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    /* background-image: url("../Images/Kahoot-Virtual-Background-WinterScene.png"); */
+}
+h1{
+    color:white;
+}
+.box{
+    background-color: white;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    height: 138px;
+    width: 320px;
+    transform: translate(-50%, -50%);
+}
+.center{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Entrybox{
+    position: absolute;
+    top: 32%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 35%;
+    width: 80%;
+    border: 2px solid;
+    border-color: lightgrey;
+    border-radius: 5px;
+    text-align: center;
+}
+.Entrybox[type="text"]
+{
+    font-size:16px;
+    font-weight: bold;
+    color: rgb(51, 51, 51);
+}
+.EnterButton{
+    /* margin-top: 23%; */
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 30%;
+    width: 82%;
+    border: 2px solid rgb(51, 51, 51);
+    background-color: rgb(51, 51, 51);
+    color: white;
+    font-family: "Montserrat", "Noto Sans Arabic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    border-radius: 5px;
+
+}
+.fullheight{
+    height: 100%;
+  vertical-align: middle;
+}
+.title{
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circle {
+    position: absolute;
+    height:1000px;
+    width: 1000px;
+    background-color: #4f268e;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+.square{
+    height: 1000px;
+    width: 1000px;
+    transform: translate(100%, 60%);
+    position: absolute;
+    background-color: #4f268e;
+}
