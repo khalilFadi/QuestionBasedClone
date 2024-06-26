@@ -1,9 +1,22 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import './css/home.css';
+// import { useNavigate } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+
+import {useNavigate} from 'react-router-dom';
+
+
+import Question from './pages/question';
 function App() {
     const [gamePin, setGamePin] = useState("");
+    // const navigate = useNavigate()
+    const navigate = useNavigate();
+    const WaitingRoom = () => {
+      // Now you can navigate programmatically to other pages using navigate
+      navigate('/waitingRoom');
+    };
     const handleOnSubmit = async (e) => {
-      
+
         e.preventDefault();
         
         let result = await fetch(
@@ -20,18 +33,10 @@ function App() {
             alert("Data saved succesfully");
             setGamePin("");
         }
+        WaitingRoom();
     }
     return (
-        <>
-            {/* <h1>This is React WebApp </h1>
-            <form action="">
-                <input type="text" placeholder="name"
-                value={name} onChange={(e) => setName(e.target.value)} />
-                <input type="email" placeholder="email"
-                value={email} onChange={(e) => setEmail(e.target.value)} />
-                <button type="submit"
-                onClick={handleOnSubmit}>submit</button>
-            </form> */}
+        <div className="App">
             <h1 className="title" id="title">Kahoot?</h1>
           <div className="box">
             <form action="">
@@ -44,7 +49,7 @@ function App() {
           </div>
           <div className="circle"></div>
           <div className="square"></div>
-        </>
+        </div>
     );
 }
  

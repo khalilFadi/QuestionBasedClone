@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Question from './pages/question';
+import WaitingRoom from './pages/waitingRoom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Router>
+          <Routes>
+
+          <Route path="/" element={<App/>} />
+          <Route path="/waitingRoom" element={<WaitingRoom/>} />
+          <Route path="/question" element={<Question />} />
+
+          </Routes>
+    </Router>
+
   </React.StrictMode>
 );
 

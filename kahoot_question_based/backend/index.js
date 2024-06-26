@@ -49,7 +49,6 @@ app.post("/register", async (req, resp) => {
 		} else {
 			console.log("User already register");
 		}
-
 	} catch (e) {
 		resp.send("Something Went Wrong");
 	}

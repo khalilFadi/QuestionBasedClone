@@ -1,0 +1,173 @@
+:root {
+    --marginAmount: 0.2%;
+    --white: #ffffff;
+}
+.question body{
+    background-color: white;
+    height: 100%;
+    width: 100%;
+
+}
+.instructions{
+    background-color: white;
+    width: 100%;
+    height: 10%;
+    top: 0%;
+    left: 0%;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    box-shadow: 0px 4px 2px rgba(78, 78, 78, 0.154);
+    z-index: 1;
+}
+.instructions h2{
+    font-size: 30px;
+}
+.question{
+    background-color: rgb(230, 230, 230);
+    width: 100%;
+    height: 55%;
+    top:10%;    
+    left: 0%;
+    position: fixed;
+}
+.choices{
+    background-color: lightgrey;
+    width: 100%;
+    height: 35%;
+    top: 65%;
+    left: 0%;
+    position: fixed;
+    justify-content:space-around;
+}
+.time{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+}
+.questiondiv{
+    width: 60%;
+    height: 97%;
+    margin-top: 0.5%;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    border: 1px;
+
+    border-color: black;
+    border-radius: 2px;
+    background-color: white;
+}
+.answerCount{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 80%;
+
+   
+}
+.answeCountNumber{
+    font-size: 5vw;
+}
+.answerCountDiv{
+    top:30%;
+    position: absolute;
+    left: 87%;
+}
+.question .circle{
+
+    width: 7vw;
+    height: 7vw;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background-color: #46178f;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    opacity: 0.8;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    font-size: 2.3vw;
+}
+.button{
+    width: 49%;
+    height: 48%;
+    margin: auto;
+    position: relative;
+    border: 0px;
+    border-radius: 4px;
+    color:white;
+    font-size: 2vw;
+    font-weight: 800;
+
+
+}
+.button:hover{
+    opacity:0.8
+}
+.button .shape{
+    height: 100%;
+    width: 10%;
+    float: left;
+}
+.button div{
+    width: 90%;
+    text-align: left;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+    position: relative;
+    height: 100%;
+}
+.button .shape *{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: 3;
+    background-color: white;
+    opacity: 1;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-20%, -50%);
+}
+.red{
+    background-color: #de1835;
+    margin-right: var(--marginAmount);
+    margin-bottom: var(--marginAmount);
+
+}
+.blue{
+    background-color: #1368ce;
+    margin-left:  var(--marginAmount);
+    margin-bottom:  var(--marginAmount);
+}
+.yellow{
+    background-color: #ffa602;
+    margin-right:  var(--marginAmount);
+    margin-top:  var(--marginAmount);
+}
+.green{
+    background-color: #26890c;
+    margin-left:  var(--marginAmount);
+    margin-top:  var(--marginAmount);
+}
+.arrow-up {
+    border-left: 20px solid #ffa602;
+    border-right: 20px solid #ffa602;
+    border-bottom: 20px solid white;
+}
+.rhombus{
+    width: 40% !important;
+    transform: translate(-20%, -50%) rotateY(0deg) rotate(45deg)  !important;
+}
