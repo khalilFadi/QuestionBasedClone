@@ -20,7 +20,7 @@ function App() {
     const WaitingRoom = () => {
       // Now you can navigate programmatically to other pages using navigate
 
-      navigate('/waitingRoom');
+      navigate(`/waitingRoom`);
     };
 
     const [gamePin, setGamePin] = useState('');
@@ -32,7 +32,6 @@ function App() {
       try {
         const response = await axios.post('http://localhost:9999/api/check-server', { gamePin });
         if (response.data.exists) {
-          alert(`Server with Game PIN ${gamePin} exists!`);
           setMyGamePin(gamePin);
           WaitingRoom();
         } else {
@@ -76,7 +75,7 @@ function App() {
               </div>
               <br/>
               {/* <button className="EnterButton" type="submit" onClick={handleOnSubmit}>Enter</button> */}
-              <button className="EnterButton" type="submit" onClick={lookForElement}>Look</button>
+              <button className="EnterButton" type="submit" onClick={lookForElement}>Find Server</button>
               
             </form>
           </div>

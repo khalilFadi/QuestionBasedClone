@@ -9,7 +9,6 @@ import { useMyContext } from '../MyContext.js';
 
 function WaitingRoom() {
     const { myGlobalGamePin, setMyGamePin } = useMyContext();
-
     return (
         <div className="WaitingRoom">
             <div className='header'>
