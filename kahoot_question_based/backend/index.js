@@ -1,56 +1,44 @@
-// Code for mongoose config in backend
-// Filename - backend/index.js
-
-// To connect with your mongoDB database
-const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://khamad:f0eKXq0dUgpyQBsQ@stplkahootclone.vd4qa35.mongodb.net/?retryWrites=true&w=majority&appName=STPLKahootClone');
-
-// Schema for users of app
-const UserSchema = new mongoose.Schema({
-	gamePin: {
-		type: Number,
-		required: true
-	}, 
-    PlayerCount: {
-        type: Number,
-        required: true, 
-        default: 1
-    }
-}, {collation: "Servers"});
-const User = mongoose.model('Activeservers', UserSchema);
-User.createIndexes();
-
-// For backend and express
 const express = require('express');
+const mongoose = require('mongoose');
+const User = require('./models/Server'); // Adjust path as per your file structure
+const cors = require('cors'); // If needed for cross-origin requests
+
 const app = express();
-const cors = require("cors");
-console.log("App listen at port 9999");
-app.use(express.json());
-app.use(cors());
-app.get("/", (req, resp) => {
+const port = 9999; // Replace with your desired port number
 
-	resp.send("App is Working");
-	// You can check backend is working or not by 
-	// entering http://localhost:9999
-	
-	// If you see App is working means
-	// backend working properly
+const mongoURI = 'mongodb+srv://khamad:f0eKXq0dUgpyQBsQ@stplkahootclone.vd4qa35.mongodb.net/?retryWrites=true&w=majority&appName=STPLKahootClone'; // Replace with your MongoDB connection string
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
-app.post("/register", async (req, resp) => {
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+app.use(express.json()); // Middleware to parse JSON bodies
+app.use(cors()); // Middleware for handling cross-origin requests
+
+app.post('/api/check-server', async (req, res) => {
+	const { gamePin } = req.body;
+  
 	try {
-		const user = new User(req.body);
-		let result = await user.save();
-		result = result.toObject();
-		if (result) {
-			delete result.password;
-			resp.send(req.body);
-			console.log(result);
-		} else {
-			console.log("User already register");
-		}
-	} catch (e) {
-		resp.send("Something Went Wrong");
+	  const server = await User.findOne({ gamePin });
+	  if (server) {
+		res.json({ exists: true, server });
+	  } else {
+		res.json({ exists: false });
+	  }
+	} catch (error) {
+	  console.error('Error checking server:', error);
+	  res.status(500).json({ error: 'Internal Server Error' });
 	}
+  });
+  
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
-app.listen(9999);
+

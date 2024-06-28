@@ -5,7 +5,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import '../css/waitingRoom.css';
 import '../css/main.css';
 
+
 function WaitingRoom() {
+
     return (
         <div className="WaitingRoom">
             <div className='header'>
