@@ -1,20 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext, useContext  } from 'react';
 import './css/home.css';
 // import { useNavigate } from "react-router-dom";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import axios from 'axios';
 
 import {useNavigate} from 'react-router-dom';
-
+import { useMyContext } from './MyContext.js';
 
 import Question from './pages/question';
 function App() {
+    //Creating a global variable 
+    const { myGlobalGamePin, setMyGamePin } = useMyContext();
 
+    const handleClick = () => {
+      setMyGamePin('12345'); // Example of setting the game pin
+    };
     // const navigate = useNavigate()
     const navigate = useNavigate();
     const WaitingRoom = () => {
       // Now you can navigate programmatically to other pages using navigate
-      const GamePin = '1234';
+
       navigate('/waitingRoom');
     };
 
@@ -28,6 +33,7 @@ function App() {
         const response = await axios.post('http://localhost:9999/api/check-server', { gamePin });
         if (response.data.exists) {
           alert(`Server with Game PIN ${gamePin} exists!`);
+          setMyGamePin(gamePin);
           WaitingRoom();
         } else {
           alert(`Server with Game PIN ${gamePin} does not exist.`);

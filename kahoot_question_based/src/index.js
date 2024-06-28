@@ -6,20 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import Question from './pages/question';
 import WaitingRoom from './pages/waitingRoom';
+import { useMyContext } from './MyContext.js';
+import { MyProvider } from './MyContext'; // Adjust the path as needed
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+
+  <MyProvider>
   <React.StrictMode>
     <Router>
           <Routes>
-
           <Route path="/" element={<App/>} />
           <Route path="/waitingRoom" element={<WaitingRoom/>} />
           <Route path="/question" element={<Question />} />
-
           </Routes>
     </Router>
 
   </React.StrictMode>
+  </MyProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

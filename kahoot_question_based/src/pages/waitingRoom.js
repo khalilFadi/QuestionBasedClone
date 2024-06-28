@@ -4,9 +4,11 @@ import { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import '../css/waitingRoom.css';
 import '../css/main.css';
+import { useMyContext } from '../MyContext.js';
 
 
 function WaitingRoom() {
+    const { myGlobalGamePin, setMyGamePin } = useMyContext();
 
     return (
         <div className="WaitingRoom">
@@ -18,7 +20,7 @@ function WaitingRoom() {
                 <div className='triangleRight'> </div>
                 <div style={{width:'60%', alignItems: 'center'}}>
 
-                <p>970 901 1242</p>
+                <p>PIN: {myGlobalGamePin}</p>
                 </div>
             </div>
             </div>
