@@ -8,8 +8,9 @@ import Question from './pages/question';
 import WaitingRoom from './pages/waitingRoom';
 import { useMyContext } from './MyContext.js';
 import { MyProvider } from './MyContext'; // Adjust the path as needed
-
+import CreateServer from './pages/createServer.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
 
   <MyProvider>
@@ -19,6 +20,7 @@ root.render(
           <Route path="/" element={<App/>} />
           <Route path="/waitingRoom" element={<WaitingRoom/>} />
           <Route path="/question" element={<Question />} />
+          <Route path="/createServer" element={<CreateServer/>}/>
           </Routes>
     </Router>
 
