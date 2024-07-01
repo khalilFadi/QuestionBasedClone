@@ -77,7 +77,7 @@ function App() {
               
             </form>
           </div>
-          <h3 style={{top:'57%', position: 'absolute', left: '45%', fontWeight: '300'}}>create your server</h3>
+          <h3 style={{top:'59%', position: 'absolute', left: '50%', fontWeight: '300', transform: 'translate(-50%, -50%)', color: 'white', fontWeight: '500'}}>create your server</h3>
           <div className="circle"></div>
           <div className="square"></div>
         </div>

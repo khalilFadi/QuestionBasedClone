@@ -1,0 +1,56 @@
+.questionsEditsPanel{
+
+    width: 90%;
+    height: 15%;
+    position: relative;
+    margin-top: 2%;
+    margin-left: 5%;
+    border-radius: 20px;
+    border-style: dashed;
+    border-color: #33333366;
+    border-width: 2px;
+}
+.questionsEditsPanel .questionInfo{
+    text-align: left;
+}
+.questionsEditsPanel .questionInfo .questionText{
+    font-size: 2vw;
+    font-weight: 300;
+    width: fit-content;
+    max-width: 70%;
+    overflow-x: hidden;
+    max-height: 50%;
+    margin: 0;
+    float: left;
+    margin-left: 0.5%;
+    height: 40px;
+    max-height: 50%;
+    overflow: auto;
+    overflow-x: hidden;
+}
+.questionsEditsPanel .questionInfo .questionStyle{
+    float: left;
+    font-size: 2vw;
+    margin-left: 2%;
+}
+.questionsEditsPanel .questionInfo .percentage{
+    float:left;
+    position: absolute;
+    top:70%;
+    left: 5.5%;
+    transform: translate(-50%,-50%);
+}
+.questionsEditsPanel .questionInfo .percentage h1{
+    color: grey;
+    margin: 0;
+    float: left;
+
+}
+.questionsEditsPanel .questionInfo .settings{
+    width: 5%;
+    margin-right: 2%;
+    margin-top: 1%;
+    float: right;
+    height: auto;
+    aspect-ratio: 1 / 1;
+}

@@ -1,0 +1,79 @@
+.usermedium{
+
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #33333366;
+    border-width: 2px;
+    width: 90%;
+    height: 30%;
+    position: relative;
+    margin-top: 2%;
+    margin-left: 5%;
+}   
+.usermedium .user__avatar{
+    width: 15%;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top:0%;
+
+}
+.usermedium .user__avatar img{
+    height: 110%;    
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    margin: 0;
+}
+.usermedium .user__info{
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 15%;
+
+
+}
+.usermedium .user__info .text{
+    float: left;
+    text-align: left;
+}
+.usermedium .user__info .text .user_name{
+    color:#46178F;
+    font-size: 1.5vw;
+    margin: 0;
+    margin-top: 10%;
+}
+.usermedium .user__info .text .time_taken{
+    margin: 0;
+    font-size: 1vw;
+    margin-top: 2%;
+}
+
+.usermedium .percentage{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 80%;
+
+    text-align: center;
+}
+.usermedium .percentage .percentage_value{
+    font-size: 3vw;
+    position: absolute;
+    font-weight: 700;
+    color: #333333;
+    position: absolute;
+    left: 43%;
+    top: 50%;
+    margin: 0;
+    transform: translate(-50%,-50%);
+}
+.usermedium .percentage .percentage_sign{
+    font-size: 1.5vw;
+    float: right;
+    color: #333333;
+    margin-right: 2%;
+}
