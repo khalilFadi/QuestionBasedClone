@@ -18,7 +18,7 @@ function App() {
     const WaitingRoom = () => {
       // Now you can navigate programmatically to other pages using navigate
 
-      navigate(`/waitingRoom`);
+      navigate(`/createAvatar`);
     };
 
     const [gamePin, setGamePin] = useState('');
@@ -28,7 +28,7 @@ function App() {
       e.preventDefault();
 
       try {
-        const response = await axios.post('http://localhost:9999/api/check-server', { gamePin });
+        const response = await axios.post('http://localhost:9999/api/check-server-exists', { serverPIN: gamePin });
         if (response.data.exists) {
           setMyGamePin(gamePin);
           WaitingRoom();
@@ -77,7 +77,7 @@ function App() {
               
             </form>
           </div>
-          <h3 style={{top:'59%', position: 'absolute', left: '50%', fontWeight: '300', transform: 'translate(-50%, -50%)', color: 'white', fontWeight: '500'}}>create your server</h3>
+
           <div className="circle"></div>
           <div className="square"></div>
         </div>

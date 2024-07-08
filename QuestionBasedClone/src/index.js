@@ -11,6 +11,10 @@ import { MyProvider } from './MyContext'; // Adjust the path as needed
 import CreateServer from './pages/createServer.js';
 import Dashboard from './pages/dashboard.js';
 import QuestionsPreview from './pages/questionsPreview.js';
+import CreateAvatar from './pages/createAvatar.js';
+import Login from './pages/login.js';
+import Signup from './pages/signup.js';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -25,6 +29,9 @@ root.render(
           <Route path="/createServer" element={<CreateServer/>}/>
           <Route path='/dashboard' element={<Dashboard/>}/>
           <Route path='/questionsPreview' element={<QuestionsPreview/>}/>
+          <Route path='/CreateAvatar' element={<CreateAvatar/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
           </Routes>
     </Router>
 
