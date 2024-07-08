@@ -38,7 +38,7 @@ const StudentSchema = mongoose.Schema({
     TotalScore: {
         type: String,
         required: false,
-        default: '0%',
+        default: '0',
     }
 })
 Student = mongoose.model('Students', StudentSchema);

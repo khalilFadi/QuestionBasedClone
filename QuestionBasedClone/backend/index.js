@@ -135,16 +135,12 @@ app.post('/add-student', async (req, res) => {
 			StudentPIN = RandomPINGernerator();
 			exists = await Students.findOne({StudentPIN: StudentPIN});
 		}
-		const {ServerPIN, UserID, studentName} = req.body;
+		const {ServerPIN, UserID, studentName, studentAvatar} = req.body;
 		exists = await Students.findOne({ServerPIN: Number(ServerPIN), UserID:UserID});
 		console.log('existance: ', exists);
 		console.log("PIN: ", ServerPIN, "UserID: ", UserID);
-		if(exists){
-			res.send(StudentPIN);
-			throw "Student Exists";
-		}
 		console.log("Student name saved: ", studentName);
-		await createListing("Students",new Student({StudentPIN, ServerPIN, UserID, Name: studentName}));
+		await createListing("Students",new Student({StudentPIN, ServerPIN, UserID, Name: studentName, Avatar: studentAvatar}));
 		res.send({ message: 'Student added successfully' });
 	} catch (e){
 		console.error('Error adding element:', e);
@@ -162,9 +158,10 @@ app.post('/get-questions', async (req, res) => {
 		}
 		const questions = await Questions.find({ServerPIN: Number(serverPIN)}).toArray();
 		res.send(questions);
-		} catch (e){
-			console.error('Error adding element:', e);
-			}
+	} catch (e){
+		console.error('Error adding element:', e);
+		res.send('Error');
+	}
 });
 //gt 
 //getting all students in a server
@@ -174,6 +171,7 @@ app.post('/get-students-in-server', async (req, res) => {
 		const { serverPIN } = req.body;	
 		const findingStudents = await Students.find({ServerPIN: Number(serverPIN)});
 		const students = await findingStudents.toArray();
+		console.log("gettingStudents, pin: ", serverPIN, " students: ", students);
 		res.send(students);		
 	} catch (e){
 		console.error('Error adding element:', e);
@@ -192,7 +190,7 @@ app.post('/api/change-server-status', async (req, res) => {
 	} catch (e){
 		console.error('Error checking Server:', e);
 	}
-})
+});
 //getting server Status 
 app.post('/api/get-server-status', async (req, res) => {
 	try{
@@ -205,7 +203,7 @@ app.post('/api/get-server-status', async (req, res) => {
 	}
 });
 //get a list of the questions in the server
-app.post('/list-of-questions-in-server', )
+
 app.post('/api/login', async (req, res) => {
 	try {
 		const {Username, Password} = req.body;

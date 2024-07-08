@@ -1,12 +1,12 @@
 import '../css/users.css';
 import defult_profile_pic from '../images/Default_profile_pic.png';
 
-const MediumUserSize = ({username, timetaken, percentage}) => {
+const MediumUserSize = ({username, timetaken, percentage, studentAvatar}) => {
 
     return (
         <div className="usermedium">
             <div className="user__avatar">
-                <img src={defult_profile_pic} />
+                <img src={studentAvatar} />
             </div>
             <div className="user__info">
                 <div className="text">
@@ -23,5 +23,16 @@ const MediumUserSize = ({username, timetaken, percentage}) => {
         </div>
     );
 }
-
+export const SmallUserSize = ({studentName, studentAvatar}) => {
+    return (
+        <div className="usersmall">
+            <div className='image'>
+                <img src={studentAvatar}/>
+            </div>
+            <div className='name'>
+                {studentName}
+            </div>
+        </div>
+    );
+}
 export default MediumUserSize;

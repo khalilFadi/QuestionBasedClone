@@ -7,17 +7,15 @@ const MyContext = createContext();
 
 export const MyProvider = ({ children }) => {
   const [myGlobalGamePin, setMyGamePin] = useState('');
+  const [studentPIN, setStudentPIN] = useState(null);
+  const [userID, setUserID] = useState(null);
 
   return (
-    <MyContext.Provider value={{ myGlobalGamePin, setMyGamePin }}>
+    <MyContext.Provider value={{ myGlobalGamePin, setMyGamePin, studentPIN, setStudentPIN, userID, setUserID}}>
       {children}
     </MyContext.Provider>
   );
 };
-// export const goTo = () =>{
-//   const navigate = useNavigate();
-
-// }
 export const useGoTo = () => {
   const navigate = useNavigate();
   const goTo = (path) => {

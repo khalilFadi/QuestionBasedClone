@@ -20,7 +20,7 @@
 }
 .questionsPreview .body{
     background-color: #F8F9FA;
-    ;
+    overflow-y: auto;
     height: 90%;
     width: 80%;
     position: absolute;
@@ -105,6 +105,7 @@ text-align: left;
     font-weight: 700;
     text-align: center;
     border-radius: 20px;
+    margin-bottom: 40px;
 }
 .questionsPreview .body .createNewQuestion:hover{
 opacity: 80%;
@@ -116,6 +117,8 @@ opacity: 80%;
     border-radius: 20px;
     width: 80vw;
     height: 70vh;
+    overflow:scroll;
+
 
 }
 .CreatingQuestionBody .creatingQuestinButton{

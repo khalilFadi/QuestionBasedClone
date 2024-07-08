@@ -14,6 +14,8 @@ import QuestionsPreview from './pages/questionsPreview.js';
 import CreateAvatar from './pages/createAvatar.js';
 import Login from './pages/login.js';
 import Signup from './pages/signup.js';
+import Admin from './pages/admin.js';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -32,9 +34,10 @@ root.render(
           <Route path='/CreateAvatar' element={<CreateAvatar/>}/>
           <Route path='/login' element={<Login/>}/>
           <Route path='/signup' element={<Signup/>}/>
+          <Route path='/admin' element={<Admin/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>
           </Routes>
     </Router>
-
   </React.StrictMode>
   </MyProvider>
 

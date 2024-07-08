@@ -106,3 +106,19 @@ p{
 .startButton:hover { 
     opacity: 0.5;
 }
+.WaitingRoom .body .ActivePlayers{
+    width: 80%;
+    height: 70%;
+
+    margin-left: 5%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-x: auto;
+
+}
+.WaitingRoom .body .ActivePlayers *{
+    margin-left: 2%;
+    margin-top: 2%;
+}

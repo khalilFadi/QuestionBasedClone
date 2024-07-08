@@ -77,3 +77,32 @@
     color: #333333;
     margin-right: 2%;
 }
+
+
+.usersmall{
+    background-color: #25076b;
+    width: fit-content;
+    max-width:200px;
+    height: 100px;
+    float: left;
+    border-radius: 12px;
+}
+.usersmall .image{
+    width: 50%;
+    height: 100%;
+    float: left;
+    margin: 0;
+}
+.usersmall .image img{
+    width: 100%;
+}
+.usersmall .name{
+    width: fit-content;
+    height: 100%;
+    float: left;
+    color: white;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+    margin: 0;  
+}
