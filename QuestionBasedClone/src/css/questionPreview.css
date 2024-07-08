@@ -1,0 +1,153 @@
+.questionsPreview{
+    background-color: white;
+}
+.questionsPreview .sideBar{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-color: #46178f;
+}
+.questionsPreview .topBar{
+    background-color: #F8F9FA;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    display:block;
+}
+.questionsPreview .body{
+    background-color: #F8F9FA;
+    ;
+    height: 90%;
+    width: 80%;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+}
+.questionsPreview .sideBar .logoSection{
+    height: 12%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-bottom-style:dashed;
+    border-color: #563688;
+    border-width: 2px;
+}
+.questionsPreview .sideBar .logoSection h1{
+    float: left;
+    margin-left: 5%;
+}
+.questionsPreview .sideBar .logoSection img{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+.questionsPreview .sideBar .selectingServer{
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    border-bottom-style:dashed;
+    border-color: #563688;
+    border-width: 2px;
+}
+.questionsPreview .sideBar .dashboardMenu{
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    top: 22%;
+    left: 0%;
+
+}
+.questionsPreview .sideBar .userInfo{
+    height: 13%;
+    width: 100%;
+    position: absolute;
+    top: 87%;
+    left: 0%;
+    background-color: #4f268e;
+
+}
+.questionsPreview .topBar .title{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    top: 53%;
+    left: 17.5%;
+    margin: none;
+}
+.questionsPreview .topBar .title h1{
+    color: #46178f;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    text-align: left;
+}
+.questionsPreview .topBar .title p{
+font-size: medium;
+font-weight: 400;
+margin: 0;
+width: 100%;
+text-align: left;
+}
+.questionsPreview .body .createNewQuestion{
+    width: 90%;
+    height: 15%;
+    margin-top: 2%;
+    background-color: #46178f;
+    border-style: none;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 20px;
+}
+.questionsPreview .body .createNewQuestion:hover{
+opacity: 80%;
+}
+.CreatingQuestionBody{
+    background-color: white;
+    border-style: dashed;
+    border-width: 2px;
+    border-radius: 20px;
+    width: 80vw;
+    height: 70vh;
+
+}
+.CreatingQuestionBody .creatingQuestinButton{
+    width: 90%;
+    background-color: #46178f;
+    border-radius: 20px;
+    border-style: none;
+    color: white;
+    height: 15%;
+    position: absolute;
+    top: 80%;
+    left: 5%;
+}
+.CreatingQuestionBody .label{
+    width: 60%;
+    height: 10%;
+    font-size: 20px;
+    font-weight: 700;
+    float: left;
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.CreatingQuestionBody .input{
+    width: 80%;
+    margin-left: 10%;
+    height: 4vh;
+    font-size: 20px;
+    font-weight: 700;
+    float: left;
+    border-radius: 10px;
+    border-style: solid;
+
+}

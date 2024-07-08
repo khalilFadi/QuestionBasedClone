@@ -1,0 +1,77 @@
+.createServer{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.createServer .body{
+    background-color: white;
+    width: 50%;
+    height: 80%;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+
+}
+.createServer .body .bigdiv .title{
+    width: 100%;
+    margin: 0;
+    font-size: 18px;
+}
+.createServer .body .bigdiv .input{
+    width: 100%;    
+    margin-top: 80px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: solid;
+    font-size: 15px;
+    padding-left: 20px;
+    border-color: rgba(0, 0, 0, 0.33);
+
+}
+.createServer .body .bigdiv{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: 100%;
+    left:48%;
+    text-align: left;
+}
+.createServer .body .serverName{
+    top: 10%;
+    height: 20%;
+}
+.createServer .body .creatorName{
+    top: 30%;
+    height: 20%;
+
+}
+.createServer .body .serverDescription{
+    top: 54%;
+    height: 40%;
+}
+.createServer .body .serverDescription .input{
+    height: 60%;
+    margin-top: 120px;
+    border-width: 2px;
+    padding-top: 15px;
+}
+.createServer .body .button{
+    width: 20%;
+    padding: 10px;
+    height: 10%;
+    background-color: #46178f;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 2vw;
+    border-radius: 12px;
+}
+.createServer .body .goBack{
+    top:90%;
+    left:18%;
+}
+.createServer .body .next{
+    top:90%;
+    left: 81.5%;
+}

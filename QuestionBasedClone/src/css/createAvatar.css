@@ -1,0 +1,150 @@
+.createAvatar{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.createAvatar .body{
+    background-color: #47178f00;
+    width: 50%;
+    height: 50%;
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.createAvatar .body .bigdiv .title{
+    width: 100%;
+    margin: 0;
+    font-size: 40px;
+    color: white;
+}
+.createAvatar .body .bigdiv .input{
+    width: 100%;    
+    margin-top: 80px;
+    height: 50px;
+    border-radius: 20px;
+    border-style: solid;
+    font-size: 15px;
+    padding-left: 20px;
+    border-color: rgba(0, 0, 0, 0.33);
+
+}
+.createAvatar .body .bigdiv{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    width: 80%;
+    height: 100%;
+    left:48%;
+    text-align: center;
+}
+.createAvatar .body .serverName{
+    top: 10%;
+    height: 20%;
+}
+.createAvatar .body .creatorName{
+    top: 30%;
+    height: 20%;
+
+}
+.createAvatar .body .serverDescription{
+    top: 54%;
+    height: 40%;
+}
+.createAvatar .body .serverDescription .input{
+    height: 60%;
+    margin-top: 120px;
+    border-width: 2px;
+    padding-top: 15px;
+}
+.createAvatar .body .button{
+    width: 20%;
+    padding: 10px;
+    height: 20%;
+    background-color: white;
+    color:#47178f;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    font-size: 2vw;
+    border-radius: 12px;
+}
+.createAvatar .body .goBack{
+    top:90%;
+    left:18%;
+}
+.createAvatar .body .next{
+    top:90%;
+    left: 81.5%;
+}
+.createAvatar .body .AvatarImages{
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    top: 40%;
+}
+.createAvatar .body .AvatarImages img{
+    width: 20%;
+    background-color: white;
+    margin-left: 2%;
+    border-radius: 20px;
+}
+.createAvatar .body .AvatarImages img:hover{
+opacity: 80%;
+}
+.createAvatar .body .AvatarImages img:active{
+opacity: 50%;
+}
+.createAvatar .body .Buttons{
+    width: 100%;
+    height: 30%;
+    position: absolute;
+    top: 75%;
+    left: 6%;
+    
+}
+.createAvatar .body .Buttons *{
+    float: left;
+    
+}
+.createAvatar .body .Buttons button{
+    width: 20%;
+    padding: 10px;
+    background-color: white;
+    color:#47178f;
+    font-size: 2vw;
+    border-radius: 12px;
+    border-style: none;
+}
+.createAvatar .body .Buttons button:hover{
+opacity: 80%;
+}
+.createAvatar .body .Buttons button:active{
+    opacity: 50%;
+}
+
+
+
+.createAvatar .body .Buttons .space{
+    width: 50%;
+    height: 10%;
+}
+.createAvatar .loginButton{
+    position: absolute;
+    width: 9%;
+    height: 5%;
+    top: 3%;
+    left: 89%;
+    background-color: #25076b;
+    color:white;
+    border-radius: 10px;
+    border-style: none;
+    font-size: 2vw;
+    font-weight: 600;
+    padding: 5px;
+}
+.createAvatar .loginButton:hover{
+    opacity: 80%;
+}
+.createAvatar .loginButton:active{
+    opacity: 50%;
+}

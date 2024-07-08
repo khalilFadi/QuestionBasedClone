@@ -1,0 +1,240 @@
+.Dashboard{
+    background-color: white;
+}
+.Dashboard .sideBar{
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    background-color: #46178f;
+}
+.Dashboard .topBar{
+    background-color: #F8F9FA;
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    display:block;
+}
+.Dashboard .body{
+    background-color: #F8F9FA;
+    ;
+    height: 90%;
+    width: 80%;
+    position: absolute;
+    top: 10%;
+    left: 20%;
+}
+.Dashboard .sideBar .logoSection{
+    height: 12%;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    border-bottom-style:dashed;
+    border-color: #563688;
+    border-width: 2px;
+}
+.Dashboard .sideBar .logoSection h1{
+    float: left;
+    margin-left: 5%;
+}
+.Dashboard .sideBar .logoSection img{
+    float: right;
+    margin-right: 5%;
+    margin-top: 5%;
+}
+.Dashboard .sideBar .selectingServer{
+    height: 10%;
+    width: 100%;
+    position: absolute;
+    top: 12%;
+    left: 0%;
+    border-bottom-style:dashed;
+    border-color: #563688;
+    border-width: 2px;
+}
+.Dashboard .sideBar .dashboardMenu{
+    height: 65%;
+    width: 100%;
+    position: absolute;
+    top: 22%;
+    left: 0%;
+
+}
+.Dashboard .sideBar .userInfo{
+    height: 13%;
+    width: 100%;
+    position: absolute;
+    top: 87%;
+    left: 0%;
+    background-color: #4f268e;
+
+}
+.Dashboard .topBar .title{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    top: 53%;
+    left: 17.5%;
+    margin: none;
+}
+.Dashboard .topBar .title h1{
+    color: #46178f;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    text-align: left;
+}
+.Dashboard .topBar .title p{
+font-size: medium;
+font-weight: 400;
+margin: 0;
+width: 100%;
+text-align: left;
+}
+
+.Dashboard .body .leftSide{
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+
+}
+.Dashboard .body .mainbox{
+    border-style: dashed;
+    border-color: #55368829;
+    border-width: 2px;
+}
+.Dashboard .body .rightSide .box1{
+    height: 35%;
+    width: 90%;
+    background-color: white;
+    position: absolute;
+    top: 3%;
+    left: 5%;
+    border-radius: 12px;
+}
+.Dashboard .body .rightSide .box2{
+    height: 54%;
+    width: 90%;
+    background-color: white;
+    position: absolute;
+    top: 42%;
+    left: 5%;
+    border-radius: 12px;
+
+}
+.Dashboard .body .rightSide{
+    height: 100%;
+    width: 70%;
+    position: absolute;
+    left: 30%;
+    top: 0%;
+
+}
+.Dashboard .body .leftSide .box1{
+    height: 35%;
+    width: 90%;
+    background-color: #46178F;
+    position: absolute;
+    top: 3%;
+    left: 10%;
+    border-radius: 12px;
+}
+.Dashboard .body .leftSide .box1 .UserNumber{
+    font-size: 100px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+.Dashboard .body .leftSide .box1 .SubUserText{
+color: white;
+position: absolute;
+left: 50%;
+top: 70%;
+transform: translate(-50%, -50%);
+margin: 0;
+font-size: 20px;
+}
+
+.Dashboard .body .leftSide .box2{
+    height: 54%;
+    width: 90%;
+    background-color: white;
+    position: absolute;
+    top: 42%;
+    left: 10%;
+    border-radius: 12px;
+
+}
+.Dashboard .body .leftSide .box2 .publishServer{
+    width: 90%;
+    height:  15%;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    background-color: #46178f;
+    color: white;
+    font-weight: 1000;
+    border-style: none;
+    border-radius: 12px;
+}
+.Dashboard .body .leftSide .box2 .EditQuestions{
+    width: 90%;
+    height:  15%;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    background-color: #46178f;
+    color: white;
+    font-weight: 1000;
+    border-style: none;
+    border-radius: 12px;
+}
+.Dashboard .body .leftSide .box2 .EditServerSettings{
+    width: 90%;
+    height:  15%;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    background-color: #46178f;
+    color: white;
+    font-weight: 1000;
+    border-style: none;
+    border-radius: 12px;
+}
+.Dashboard .body .leftSide .box2 .MoreSettings{
+    width: 90%;
+    height:  15%;
+    position: absolute;
+    top: 70%;
+    left: 5%;
+    background-color: #25076B;
+    color: white;
+    font-weight: 1000;
+    border-style: none;
+    border-radius: 12px;
+}
+.Dashboard .body .leftSide .box2 button:hover{
+    opacity: 80%;
+}
+.Dashboard .body .rightSide .box1 .User_medium_info{
+    scrollbar-color: #46178f #25076b15;
+    overflow:scroll;
+    overflow-x: hidden;
+    height: 100%;
+
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+} 
+.Dashboard .body .rightSide .box1 .User_medium_info .user_info{
+}
