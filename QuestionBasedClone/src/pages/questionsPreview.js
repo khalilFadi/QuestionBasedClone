@@ -27,8 +27,7 @@ function QuestionsPreview() {
 
     const findQuestions = async () => {  
         const questionsResp = await axios.post('http://localhost:9999/get-questions', {serverPIN: myGlobalGamePin});
-        SetQuestions(questionsResp.data);
-        
+        SetQuestions(questionsResp.data);   
     }
     useEffect(() => {
         findQuestions();

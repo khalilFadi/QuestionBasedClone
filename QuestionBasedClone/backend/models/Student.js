@@ -26,7 +26,7 @@ const StudentSchema = mongoose.Schema({
         required: true,
         default: Date.now,
     },
-    QuetionsList:{
+    QuestionsList:{
         type: Array,
         required: false
     },

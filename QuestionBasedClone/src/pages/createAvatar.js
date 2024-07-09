@@ -12,7 +12,7 @@ import { useGoTo, useMyContext } from '../MyContext.js';
 import axios from 'axios';
 function CreateAvatar() {
     const goTo = useGoTo();
-    const { myGlobalGamePin, setMyGamePin, userID} = useMyContext();
+    const { myGlobalGamePin, setMyGamePin, userID, studentPIN, setStudentPIN} = useMyContext();
 
     const [nickname, setNickname] = useState('');
     const [avatar, setAvatar] = useState(avatar1);
@@ -32,6 +32,9 @@ function CreateAvatar() {
     const saveStudent = async () => {
         const student = await axios.post('http://localhost:9999/add-student', {ServerPIN: Number(myGlobalGamePin), UserID: userID, studentName: nickname, studentAvatar: avatar});
         console.log('student: ', student);
+        setStudentPIN(student.data.StudentPIN);
+        console.log('studentPIN: ', student.data.StudentPIN);
+
         handleNavigation('/waitingRoom');
     }
 

@@ -45,12 +45,12 @@ function RandomPINGernerator(){
 //checks if a server Exits using the serverPin returns True and False 
 app.post('/api/check-server-exists', async (req, res) => {
 	const { serverPIN } = req.body;
-	console.log('Received serverPin:', serverPIN);
+
     const Servers = database.collection("Servers");
 	try {
 
 	  const server = await Servers.findOne({serverPin: Number(serverPIN)});
-	  console.log('Found server:', server);
+
 	  if (server) {
 		res.json({ exists: true, server });
 	  } else {
@@ -137,11 +137,8 @@ app.post('/add-student', async (req, res) => {
 		}
 		const {ServerPIN, UserID, studentName, studentAvatar} = req.body;
 		exists = await Students.findOne({ServerPIN: Number(ServerPIN), UserID:UserID});
-		console.log('existance: ', exists);
-		console.log("PIN: ", ServerPIN, "UserID: ", UserID);
-		console.log("Student name saved: ", studentName);
 		await createListing("Students",new Student({StudentPIN, ServerPIN, UserID, Name: studentName, Avatar: studentAvatar}));
-		res.send({ message: 'Student added successfully' });
+		res.send({StudentPIN});
 	} catch (e){
 		console.error('Error adding element:', e);
 	}
@@ -171,7 +168,6 @@ app.post('/get-students-in-server', async (req, res) => {
 		const { serverPIN } = req.body;	
 		const findingStudents = await Students.find({ServerPIN: Number(serverPIN)});
 		const students = await findingStudents.toArray();
-		console.log("gettingStudents, pin: ", serverPIN, " students: ", students);
 		res.send(students);		
 	} catch (e){
 		console.error('Error adding element:', e);
@@ -191,6 +187,41 @@ app.post('/api/change-server-status', async (req, res) => {
 		console.error('Error checking Server:', e);
 	}
 });
+
+//Add question to student profile 
+app.post('/api/add-question-to-student', async (req, res) => {
+	try{
+		const Students = database.collection("Students");
+		const {studentID, questionID, mark} = req.body;
+		//Add question to the QuetionsList in student (its an array)
+		console.log("Adding quesiton: ", questionID, " marked: ", mark , "to student: ", studentID);
+		const student = await Students.findOne({ StudentPIN: studentID });
+
+		if (!student.QuestionsList) {
+			student.QuestionsList = [];
+		  }	  
+		const existingQuestion = student.QuestionsList.find(question => question.questionID === questionID);
+
+		if (existingQuestion) {
+			// Replace the existing question
+			const result = await Students.updateOne(
+			  { StudentPIN: studentID, 'QuestionsList.questionID': questionID },
+			  { $set: { 'QuestionsList.$.mark': mark } }
+			);
+			res.status(200).send('Question updated successfully');
+		  } else {
+			// Add the new question
+			const result = await Students.updateOne(
+			  { StudentPIN: studentID },
+			  { $push: { QuestionsList: { questionID, mark } } }
+			);
+			res.status(200).send('Question added successfully');
+		  }
+	}catch (e) {
+		console.error('Error adding element:', e);
+	}
+});
+
 //getting server Status 
 app.post('/api/get-server-status', async (req, res) => {
 	try{

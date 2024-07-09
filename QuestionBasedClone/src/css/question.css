@@ -175,3 +175,34 @@
     width: 40% !important;
     transform: translate(-20%, -50%) rotateY(0deg) rotate(45deg)  !important;
 }
+.question-popup-content{
+    width: 100vw;
+    height: 100vh;
+    background-color: #46178f;
+    color:white;
+    z-index: 10;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.question-popup-content .button{
+    background-color: white;
+    color: #46178f;
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid #46178f;
+    border-radius: 20px;
+
+}
+.question-popup-content h2{
+    color: white;
+    margin: 0;
+    margin-top: 20%;
+}
+.question-popup-content p{
+    color: white;
+    margin: 0;
+    margin-top: 1%;
+}
