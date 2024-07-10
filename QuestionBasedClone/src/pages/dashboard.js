@@ -15,6 +15,7 @@ function Dashboard() {
     const [serverStatusText, setServerStatusText] = useState('Publish Server');
     const getStudents = async () => {
         const response = await axios.post('http://localhost:9999/get-students-in-server', {serverPIN: myGlobalGamePin});
+
         console.log('response: ', response.data);
         setStudents(response.data);
     }
@@ -37,12 +38,14 @@ function Dashboard() {
         currentStatus = await axios.post('http://localhost:9999/api/get-server-status', {serverPIN: myGlobalGamePin});
         setupServerStatusText(currentStatus.data, questionsLength.data.length);
     }
+
     const checkCurrentServerStatus = async () => {
         const currentStatus = await axios.post('http://localhost:9999/api/get-server-status', {serverPIN: myGlobalGamePin});
         const questionsLength = await axios.post('http://localhost:9999/get-questions', {serverPIN: myGlobalGamePin});
         console.log('currentStatus: ', currentStatus.data);
         setupServerStatusText(currentStatus.data, questionsLength.data.length);
     }
+
     function setupServerStatusText(Status, length) {
         if(Status == 'Offline'){
             setServerStatusText('Publish Server');

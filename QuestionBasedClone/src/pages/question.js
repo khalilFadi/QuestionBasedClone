@@ -64,7 +64,7 @@ function Question() {
                setAnswer2(shuffledAnswers[1]);
                setAnswer3(shuffledAnswers[2]);
                setAnswer4(shuffledAnswers[3]);
-               
+
                 setOpen(false);
             }
         } catch(e){
@@ -74,6 +74,8 @@ function Question() {
     const handleStudentScore = async (mark) => {
         try{
             const respon = await axios.post('http://localhost:9999/api/add-question-to-student', {studentID: studentPIN, questionID: questionID, mark: mark});
+            const updateScore = await axios.post('http://localhost:9999/api/update-score-for-student', {studentID: studentPIN});
+
             console.log("Student score: ", respon.data);
         }catch (e){
             console.log("Error: ", e);

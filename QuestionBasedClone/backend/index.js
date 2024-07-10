@@ -221,7 +221,31 @@ app.post('/api/add-question-to-student', async (req, res) => {
 		console.error('Error adding element:', e);
 	}
 });
+app.post('/api/update-score-for-student', async (req, res) => {
+	try{
+		const Students = database.collection("Students");
+		const {studentID} = req.body;
+		const student = await Students.findOne({StudentPIN: studentID});
+		let score = 0;
+		let totalscore = 0;
 
+		student.QuestionsList.forEach((question, index) => {
+			// Perform operations on each question
+			// For example, you can update score and totalscore based on some conditions
+			// Add your logic here
+			console.log(`Processing question ${index + 1}:`, question);
+			// Example operation: increment score and totalscore
+			score += question.mark; // Replace `someValue` with the actual property you want to use
+			totalscore += 1;
+		  });
+	
+		// Optionally, update the student document with new scores
+		await Students.updateOne({ StudentPIN: studentID }, { $set: { TotalScore: ((score / totalscore) * 100).toFixed(1).toString() } });
+	
+	}catch (e){
+		console.error('Error updating score:', e);
+	}
+})
 //getting server Status 
 app.post('/api/get-server-status', async (req, res) => {
 	try{
