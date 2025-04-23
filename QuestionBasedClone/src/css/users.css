@@ -52,30 +52,26 @@
 }
 
 .usermedium .percentage{
-    width: 20%;
     height: 100%;
     position: absolute;
     top: 0%;
-    left: 80%;
-
+    right: 2%;
+    align-items: center;
+    display: flex;
     text-align: center;
 }
 .usermedium .percentage .percentage_value{
     font-size: 3vw;
-    position: absolute;
     font-weight: 700;
-    color: #333333;
-    position: absolute;
-    left: 43%;
-    top: 50%;
     margin: 0;
-    transform: translate(-50%,-50%);
+    color: #333333;
+    float: right;
 }
 .usermedium .percentage .percentage_sign{
     font-size: 1.5vw;
     float: right;
     color: #333333;
-    margin-right: 2%;
+    margin: 0;
 }
 
 
@@ -106,3 +102,48 @@
     display: flex;
     margin: 0;  
 }
+.userLong{
+    width: 90%;
+    background-color: #273F37;
+    position: relative;
+    left: 5%;
+    margin-top: 1%;
+    height: 80px;
+}
+.userLong .image{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    float: left;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: none;
+
+}
+.userLong .image img{
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border: none;
+
+}
+.userLong .name{
+    width: 60%;
+    height: 100%;
+    float: left;
+    color: white;
+    font-size: 1vw;
+    text-align: left;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+    margin-left: 3%;
+}
+.userLong .score{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    color: white;
+    float: right;
+    align-items: center;
+    justify-content: left;
+    display: flex;
+    font-size: 2vw;
+    font-weight: 700;
+} 

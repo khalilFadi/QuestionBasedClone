@@ -143,7 +143,19 @@ app.post('/add-student', async (req, res) => {
 		console.error('Error adding element:', e);
 	}
 });
+//getting student and all its info 
+app.post('/get-student', async (req, res) => {
+	try {
+		const Students = database.collection("Students");
 
+		const { studentPIN } = req.body;
+		const studentInfo = await Students.findOne({StudentPIN: studentPIN}).toArray();
+		res.send(studentInfo);
+	} catch (e){
+		console.error('Error adding element:', e);
+		res.send('Error');
+	}
+});
 //checking for all the questions in a server
 app.post('/get-questions', async (req, res) => {
 	try {
@@ -160,7 +172,22 @@ app.post('/get-questions', async (req, res) => {
 		res.send('Error');
 	}
 });
-//gt 
+//checking for all the questions in a server
+app.post('/api/get-question', async (req, res) => {
+	try {
+		const Questions = database.collection("Questions");
+
+		const { questionID } = req.body;
+		if (!questionID) {
+		  return res.status(400).send({ message: "Question PIN is required" });
+		}
+		const question = await Questions.findOne({QuestionPIN: Number(questionID)});
+		res.send(question);
+	} catch (e){
+		console.error('Error adding element:', e);
+		res.send('Error');
+	}
+});
 //getting all students in a server
 app.post('/get-students-in-server', async (req, res) => {
 	try {
@@ -192,7 +219,8 @@ app.post('/api/change-server-status', async (req, res) => {
 app.post('/api/add-question-to-student', async (req, res) => {
 	try{
 		const Students = database.collection("Students");
-		const {studentID, questionID, mark} = req.body;
+		const Questions = database.collection("Questions");
+		const {studentID, questionID, answer, mark, time} = req.body;
 		//Add question to the QuetionsList in student (its an array)
 		console.log("Adding quesiton: ", questionID, " marked: ", mark , "to student: ", studentID);
 		const student = await Students.findOne({ StudentPIN: studentID });
@@ -201,25 +229,63 @@ app.post('/api/add-question-to-student', async (req, res) => {
 			student.QuestionsList = [];
 		  }	  
 		const existingQuestion = student.QuestionsList.find(question => question.questionID === questionID);
-
+		const question = await Questions.findOne({QuestionPIN: questionID});
 		if (existingQuestion) {
 			// Replace the existing question
 			const result = await Students.updateOne(
 			  { StudentPIN: studentID, 'QuestionsList.questionID': questionID },
-			  { $set: { 'QuestionsList.$.mark': mark } }
+			  { $set: { 'QuestionsList.$.mark': mark , 'QuestionsList.$.answer': answer, 'QuestionsList.$.time': time} }
 			);
-			res.status(200).send('Question updated successfully');
 		  } else {
 			// Add the new question
 			const result = await Students.updateOne(
 			  { StudentPIN: studentID },
-			  { $push: { QuestionsList: { questionID, mark } } }
+			  { $push: { QuestionsList: { questionID, mark, answer, time, questionText: question.QuestionText} } }
 			);
-			res.status(200).send('Question added successfully');
+
 		  }
+		  const result = await Students.updateOne(
+			{ StudentPIN: studentID},
+			{ $set: { 'TotalTime': student.TotalTime + time} }
+		  );
+		res.status(200).send('Question updated/added successfully');
+
 	}catch (e) {
 		console.error('Error adding element:', e);
 	}
+});
+//update question values 
+app.post('/api/update-question', async (req, res) => {
+    try {
+        const Questions = database.collection("Questions");
+        const { questionID, questionText2, ServerPIN, correctChoice, choice2, choice3, choice4 } = req.body;
+
+        // Ensure all necessary fields are provided
+        if (!questionID || !questionText2 || !ServerPIN || !correctChoice || !choice2 || !choice3 || !choice4) {
+            return res.status(400).send({ message: 'All fields are required' });
+        }
+
+        const respon = await Questions.updateOne(
+            { QuestionPIN: questionID, ServerPIN: ServerPIN },
+            { $set: { 
+                QuestionText: questionText2, 
+                CorrectAnswer: correctChoice, 
+                IncorrectAnswer1: choice2, 
+                IncorrectAnswer2: choice3, 
+                IncorrectAnswer3: choice4 
+            }}
+        );
+
+        if (respon.matchedCount === 0) {
+            return res.status(404).send({ message: 'Question not found' });
+        }
+
+
+        res.send({ message: 'Question updated successfully' });
+    } catch (e) {
+        console.error('Error updating question element:', e);
+        res.status(500).send({ message: 'Internal Server Error' });
+    }
 });
 app.post('/api/update-score-for-student', async (req, res) => {
 	try{
@@ -246,13 +312,16 @@ app.post('/api/update-score-for-student', async (req, res) => {
 		console.error('Error updating score:', e);
 	}
 })
+
 //getting server Status 
 app.post('/api/get-server-status', async (req, res) => {
 	try{
 		const Servers = database.collection("Servers");
 		const { serverPIN } = req.body;
 		const findingServer = await Servers.findOne({serverPin: Number(serverPIN)});
+		if(findingServer){
 		res.send(findingServer.Status);
+		}
 	} catch (e) {
 		console.error('Error checking Server:', e);
 	}

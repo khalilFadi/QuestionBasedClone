@@ -31,9 +31,9 @@ const StudentSchema = mongoose.Schema({
         required: false
     },
     TotalTime: {
-        type: String,
+        type: Number,
         required: false,
-        default: '00:00',
+        default: 0,
     },
     TotalScore: {
         type: String,

@@ -4,21 +4,88 @@ import { useContext, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import '../css/main.css';
 import '../css/question.css';
-import axios from 'axios';
 import { useGoTo, useMyContext } from '../MyContext.js';
 import Popup from 'reactjs-popup';
+import { LongUserSize } from '../components/User.js';
+import avatar1 from '../images/Avatar1.png';
+import avatar2 from '../images/Avatar2.png';
+import avatar3 from '../images/Avatar3.png';
+import avatar4 from '../images/Avatar4.png';
+
+// Mock questions data
+const mockQuestions = [
+    {
+        QuestionPIN: "1",
+        QuestionText: "Should you share your password with friends?",
+        CorrectAnswer: "No, never",
+        IncorrectAnswer1: "Yes, if they're close friends",
+        IncorrectAnswer2: "Yes, if they ask nicely",
+        IncorrectAnswer3: "Yes, if they promise not to tell"
+    },
+    {
+        QuestionPIN: "2",
+        QuestionText: "What should you do if someone asks for your personal information online?",
+        CorrectAnswer: "Don't share and tell a trusted adult",
+        IncorrectAnswer1: "Share if they seem nice",
+        IncorrectAnswer2: "Share if they're your age",
+        IncorrectAnswer3: "Share if they promise to keep it secret"
+    },
+    {
+        QuestionPIN: "3",
+        QuestionText: "Is it safe to meet someone you only know online?",
+        CorrectAnswer: "No, it's not safe",
+        IncorrectAnswer1: "Yes, if they seem nice",
+        IncorrectAnswer2: "Yes, if they're your age",
+        IncorrectAnswer3: "Yes, if they're from your area"
+    },
+    {
+        QuestionPIN: "4",
+        QuestionText: "What should you do if you see cyberbullying?",
+        CorrectAnswer: "Report it and tell a trusted adult",
+        IncorrectAnswer1: "Ignore it",
+        IncorrectAnswer2: "Join in to fit in",
+        IncorrectAnswer3: "Keep it to yourself"
+    }
+];
+
+// Mock students data
+const mockStudents = [
+    {
+        Name: "John Doe",
+        Avatar: avatar1,
+        TotalScore: 100
+    },
+    {
+        Name: "Jane Smith",
+        Avatar: avatar2,
+        TotalScore: 75
+    },
+    {
+        Name: "Bob Wilson",
+        Avatar: avatar3,
+        TotalScore: 50
+    },
+    {
+        Name: "Alice Brown",
+        Avatar: avatar4,
+        TotalScore: 25
+    }
+];
 
 function Question() {
-    const [question, setQuestion]  = useState('');
-    const [questionID, setQuestionID]  = useState(0);
-    const [answer1, setAnswer1]  = useState('');
-    const [answer2, setAnswer2]  = useState('');
-    const [answer3, setAnswer3]  = useState('');
-    const [answer4, setAnswer4]  = useState('');
+    const [question, setQuestion] = useState('');
+    const [questionID, setQuestionID] = useState(0);
+    const [answer1, setAnswer1] = useState('');
+    const [answer2, setAnswer2] = useState('');
+    const [answer3, setAnswer3] = useState('');
+    const [answer4, setAnswer4] = useState('');
     const { myGlobalGamePin, setMyGamePin, studentPIN } = useMyContext();       
+    const [startTime, setStartTime] = useState(null);
     const [open, setOpen] = useState(false);
+    const [openPodium, setPodiumOpen] = useState(false);
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [acurateAnswer, setAcurateAnswer] = useState('');
+    const [students, setStudents] = useState(mockStudents);
     let questionNumber = 0;
 
     const goTo = useGoTo();
@@ -26,6 +93,7 @@ function Question() {
     const handleNavigation = (path) => {
         goTo(path);
     };
+
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -34,74 +102,63 @@ function Question() {
         return array;
     };
 
-    const getQuestions = async () => {
+    function timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
 
-        try{
-            const respon = await axios.post('http://localhost:9999/get-questions', {serverPIN: myGlobalGamePin});
-            const serverStatus = await axios.post('http://localhost:9999/api/get-server-status', {serverPIN: myGlobalGamePin});
-            questionNumber = serverStatus.data;
-            if(questionNumber == 'Offline'){ 
-                handleNavigation('/waitingRoom');
+    const podiumAnimation = async () => {
+        setPodiumOpen(true);
+        setStudents(mockStudents);
+        await timeout(2000);
+        setPodiumOpen(false);
+        setOpen(false);
+    }
+
+    const getQuestions = () => {
+        questionNumber = Math.min(questionNumber, mockQuestions.length - 1);
+        
+        if(questionNumber >= mockQuestions.length) {
+            handleNavigation('/waitingRoom');
+            return;
+        }
+
+        if(question !== mockQuestions[questionNumber].QuestionText) {
+            if(questionNumber !== 0) {
+                podiumAnimation();
             }
-
-            console.log("question: ", question, " respndata: ", respon.data[questionNumber].QuestionText);
-            if(question != respon.data[questionNumber].QuestionText){
-                console.log("Inside the if: question: ", question, " respndata: ", respon.data[questionNumber].QuestionText);
-                setQuestion(respon.data[questionNumber].QuestionText);
-                setAcurateAnswer(respon.data[questionNumber].CorrectAnswer);
-                setQuestionID(respon.data[questionNumber].QuestionPIN);
-                const answers = [
-                    respon.data[questionNumber].CorrectAnswer,
-                    respon.data[questionNumber].IncorrectAnswer1,
-                    respon.data[questionNumber].IncorrectAnswer2,
-                    respon.data[questionNumber].IncorrectAnswer3
-                ];
-               // Shuffle the array
-               const shuffledAnswers = shuffleArray(answers);
-
-               // Set the shuffled answers to state
-               setAnswer1(shuffledAnswers[0]);
-               setAnswer2(shuffledAnswers[1]);
-               setAnswer3(shuffledAnswers[2]);
-               setAnswer4(shuffledAnswers[3]);
-
-                setOpen(false);
-            }
-        } catch(e){
-            console.log("Erorring: ", e);
+            setStartTime(Date.now());
+            setQuestion(mockQuestions[questionNumber].QuestionText);
+            setAcurateAnswer(mockQuestions[questionNumber].CorrectAnswer);
+            setQuestionID(mockQuestions[questionNumber].QuestionPIN);
+            
+            const answers = [
+                mockQuestions[questionNumber].CorrectAnswer,
+                mockQuestions[questionNumber].IncorrectAnswer1,
+                mockQuestions[questionNumber].IncorrectAnswer2,
+                mockQuestions[questionNumber].IncorrectAnswer3
+            ];
+            
+            const shuffledAnswers = shuffleArray(answers);
+            setAnswer1(shuffledAnswers[0]);
+            setAnswer2(shuffledAnswers[1]);
+            setAnswer3(shuffledAnswers[2]);
+            setAnswer4(shuffledAnswers[3]);
         }
     }
-    const handleStudentScore = async (mark) => {
-        try{
-            const respon = await axios.post('http://localhost:9999/api/add-question-to-student', {studentID: studentPIN, questionID: questionID, mark: mark});
-            const updateScore = await axios.post('http://localhost:9999/api/update-score-for-student', {studentID: studentPIN});
 
-            console.log("Student score: ", respon.data);
-        }catch (e){
-            console.log("Error: ", e);
-        }
-    }
     const handleAnswerClick = (answer) => {
+        const endTime = Date.now();
+        const timeTaken = (endTime - startTime) / 1000;
         setSelectedAnswer(answer);
-        if(answer == acurateAnswer){
-            console.log("Correct!!");
-            handleStudentScore(1);
-        }else{
-            console.log("Inorrect :< ");
-            handleStudentScore(0);
-        }
         setOpen(true);
     }
-    //calling a function every second 
 
     useEffect(() => {
         const interval = setInterval(() => {
             getQuestions();
         }, 1000);
-
         return () => clearInterval(interval);
     }, [myGlobalGamePin, question, acurateAnswer]);
-    //popup screen that shows up when you answer a question and gets hidden when the question changes 
 
     return (
         <div className="question">
@@ -142,6 +199,26 @@ function Question() {
                 <div className="question-popup-content">
                     <h2>You selected:</h2>
                     <p>{selectedAnswer}</p>
+                </div>
+            </Popup>
+
+            <Popup open={openPodium} onClose={() => setPodiumOpen(false)}>
+                <div className="question-popup-content-podium">
+                    <div className='circle'/>
+                    <div className='square'/>
+                    <div className='scoreBoard'> Scoreboard</div>
+                    <div className='users'>
+                    {students.sort((a, b) => b.TotalScore - a.TotalScore)
+                    .map((student, index) => {
+                        return (
+                            <LongUserSize 
+                            index={student.TotalScore}
+                            studentName={student.Name} 
+                            studentAvatar={student.Avatar} 
+                            score={student.TotalScore}/>
+                        )}
+                    )}
+                    </div>
                 </div>
             </Popup>
         </div>

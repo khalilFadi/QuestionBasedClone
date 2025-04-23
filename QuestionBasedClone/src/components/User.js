@@ -1,10 +1,10 @@
 import '../css/users.css';
 import defult_profile_pic from '../images/Default_profile_pic.png';
 
-const MediumUserSize = ({username, timetaken, percentage, studentAvatar}) => {
+const MediumUserSize = ({username, timetaken, percentage, studentAvatar, onClick}) => {
 
     return (
-        <div className="usermedium">
+        <div className="usermedium" onClick={onClick} style={{ cursor: 'pointer' }}>
             <div className="user__avatar">
                 <img src={studentAvatar} />
             </div>
@@ -31,6 +31,23 @@ export const SmallUserSize = ({studentName, studentAvatar}) => {
             </div>
             <div className='name'>
                 {studentName}
+            </div>
+        </div>
+    );
+}
+export const LongUserSize = ({studentName, studentAvatar,score}) => {
+    return (
+        <div className='userLong'>
+            <div className='image'>
+                <img src={studentAvatar}/>
+            </div>
+            <div className='name'>
+                <h1>
+                    {studentName}
+                </h1>
+            </div>
+            <div className='score'>
+                {score}
             </div>
         </div>
     );

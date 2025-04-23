@@ -238,3 +238,94 @@ font-size: 20px;
 } 
 .Dashboard .body .rightSide .box1 .User_medium_info .user_info{
 }
+.studentInfo{
+    width: 70vw;
+    height: 80vh;
+    position: absolute;
+    background-color: white;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-color: #25076B;
+    border-width: 2px;
+    border-radius: 20px;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+    border-style: solid;
+}
+.studentInfo .StudentPersonalInfo{
+    height: 30%;
+    width: 100%;
+    background-color: #6922D3;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: absolute;
+    top: 0%;
+}
+.studentInfo .StudentPersonalInfo .image{
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    float: left;
+}
+.studentInfo .StudentPersonalInfo .image img{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+.studentInfo .StudentPersonalInfo .mainInfo{
+
+    width: fit-content;
+    height: 100%;
+    float: left;
+    margin-left: 2%;
+    text-align: left;
+}
+.studentInfo .StudentPersonalInfo .mainInfo h1{
+    color: white;
+    margin: 0;
+    font-size: 3rem;
+    margin-top: 3%;
+}
+.studentInfo .StudentPersonalInfo .mainInfo h2{
+    color: white;
+    margin: 0;
+    font-size: 1rem;
+    margin-top: 1%;
+}
+.studentInfo .StudentPersonalInfo .mainInfo h3{
+    color: white;
+    margin-top: 2%;
+    font-size: 4rem;
+    margin-top: 4%;
+}
+.studentInfo .StudentPersonalInfo .rightSide * {
+    float: right;
+    color: white
+}
+.studentInfo .StudentPersonalInfo .rightSide h3{
+    position: absolute;
+    top: 0%;
+    right: 2%;
+}
+.studentInfo .StudentPersonalInfo .rightSide h2{
+    position: absolute;
+    bottom: 0%;
+    right: 2%;
+}
+.popup{
+    width: 100%;
+    height: 100%;
+}
+.Dashboard .studentInfo .name{
+color:black
+}
+.studentInfo .questions{
+    position: absolute;
+    top: 30%;
+    margin-top: 1%;
+    width: 100%;
+    height: 68%;
+
+    overflow-x: auto;
+}
+
